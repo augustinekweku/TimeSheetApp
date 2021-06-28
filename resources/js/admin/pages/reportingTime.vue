@@ -164,7 +164,7 @@ export default {
         },
             //set new reporting time
             	async setTimer() {
-			if (this.setTime.trim()=='') return this.error('Time is not set');
+			if (this.reportingTime.trim()=='') return this.error('Time is not set');
 
 
                         axios.post(`app/create_reportingTime/${this.reportingTime}`).then((result) => {
