@@ -4,7 +4,6 @@
 <h3>Welcome {{$mail_data->firstName}}</h3>
 <p>Below is your Login Credentials</p>
 <p>Staff ID:  {{$mail_data->staff_id}}</p>
-<p>Password: password</p>
 </div>
 </div>
 

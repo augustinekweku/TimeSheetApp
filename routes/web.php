@@ -15,11 +15,13 @@ use App\Http\Controllers\NotificationController;
 |
 */
 Route::prefix('app')->group(function(){
+    Route::get('/getSortedVerdicts/{selectedVerdict}', [StaffController::class, 'getSortedVerdicts']);
     Route::get('/get_date_range/{fromDate}/{toDate}', [StaffController::class, 'getDateRange']);
     Route::get('/get_last_notification', [NotificationController::class, 'getLastNotification']);
     Route::get('/get_users', [StaffController::class, 'getStaffs']);
     Route::get('/get_reportedTimes', [StaffController::class, 'get_reportedTimes']);
     Route::get('/get_reportingTime', [StaffController::class, 'get_reportingTime']);
+    Route::get('/getLateRecords', [StaffController::class, 'getLateRecords']);
 
     Route::post('/create_staff', [StaffController::class, 'createStaff']);
     Route::post('/create_reportedTime/{staff_id}', [StaffController::class, 'createReportedTime']);

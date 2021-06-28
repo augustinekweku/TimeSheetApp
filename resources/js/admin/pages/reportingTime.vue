@@ -21,13 +21,22 @@
             <p class="text-center">Showing Attendance records from <span>{{fromDate}}</span> to <span>{{toDate}}</span></p>
         </div>
         <div class="print_buttons">
-        <div class="print mx-2">
-        <a @click="PrintTable"><i class="fa fa-print" aria-hidden="true"></i></a>
+        <div class="sort_by_verdict">
+            <Select @on-change="selectVerdict" v-model="selectedVerdict" placeholder="Sort by verdict" style="width:170px;" class="py-2" >
+            <Option v-for="item in verdictList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            </Select>
         </div>
-        <div class="excel mx-2">
+        <div>
+            <div class="" style="display:flex; align-items:baseline;">
+        <span class="print mx-2">
+        <a @click="PrintTable"><i class="fa fa-print" aria-hidden="true"></i></a>
+        </span>
+        <span class="excel mx-2">
         <download-excel :data="rows">
         <i class="fa fa-file-excel-o" style="font-size:14px" aria-hidden="true" ></i>
         </download-excel>
+        </span>
+            </div>
         </div>
         </div>
     <div  style="overflow-x:auto;">
@@ -55,6 +64,21 @@ export default {
         },
         data () {
             return {
+                verdictList: [
+                    {
+                        value: 0,
+                        label: 'Late'
+                    },
+                    {
+                        value: 1,
+                        label: 'Early'
+                    },
+                    {
+                        value: '*',
+                        label: 'All'
+                    },
+                ],
+                selectedVerdict: '',
                 showRecordsRange: false,
                 fromDate: '',
                 toDate: '',
@@ -82,16 +106,29 @@ export default {
             field: 'timereported',
             },
             {
-            label: 'Status',
-            field: 'status',
+            label: 'Verdict',
+            field: 'verdict',
             },
         ],
-        rows:[]
+        rows:[],
+        lateRecords: []
 
             }
         },
         methods: {
+            async selectVerdict(){
+                axios.get(`app/getSortedVerdicts/${this.selectedVerdict}`).then((result) => {
+                    if (this.selectedVerdict === '*') {
+                        return this.rows = this.reportedTimes.data
+                    }
+                        this.rows = result.data
+                    }).catch((err) => {
+                        console.log(err)
+                    });
+            },
             async searchDateRange() {
+            if (this.fromDate.trim()=='') return this.error('Beginning date is required');
+			if (this.toDate.trim()=='') return this.error('End date name is required');
                         axios.get(`app/get_date_range/${this.fromDate}/${this.toDate}`).then((result) => {
                             // if (result.status = 201) {
                             //     this.setTime = this.reportingTime
@@ -127,7 +164,7 @@ export default {
         },
             //set new reporting time
             	async setTimer() {
-			//if (this.time.trim()=='') return this.error('First name is required');
+			if (this.setTime.trim()=='') return this.error('Time is not set');
 
 
                         axios.post(`app/create_reportingTime/${this.reportingTime}`).then((result) => {
@@ -158,6 +195,8 @@ export default {
             this.setTime = get_reportingTime.data.time
 
             this.reportlist()
+
+
         },
         mounted() {
         },
@@ -218,7 +257,8 @@ export default {
     }
     .print_buttons{
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
 
     }
 

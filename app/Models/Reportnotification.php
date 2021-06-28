@@ -11,6 +11,6 @@ class Reportnotification extends Model
 
 
     protected $fillable = [
-        'name', 'staff_id', 'reportingtime', 'timereported', 'timediff', 'status'
+        'name', 'staff_id', 'reportingtime', 'timereported', 'timediff', 'status', 'verdict'
     ];
 }

@@ -21,6 +21,7 @@ class CreateReportnotificationsTable extends Migration
             $table->string('timereported');
             $table->integer('timediff');
             $table->integer('status');
+            $table->string('verdict');
             $table->timestamps();
         });
     }

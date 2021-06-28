@@ -45,7 +45,9 @@
             <div class="login_header">
                 <h2>Timesheet</h2>
                 <div class="space"></div>
-                <p>Staff login</p>
+                <h3>Staff login</h3>
+                <div class="space"></div>
+                <p>Reporting Time: <span class="text-info">{{reportingTime}}</span></p>
                 <div class="space"></div>
             </div>
             <div class="space">
@@ -83,7 +85,8 @@ export default {
             admin_login: true,
             darkMode: false,
             today:'',
-            week: ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
+            week: ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'],
+            reportingTime: ''
         }
     },
       components: {
@@ -115,7 +118,7 @@ export default {
             const res = await this.callApi('post','app/login', this.data)
             if (res.status === 200) {
                 this.success(res.data.msg)
-                //window.location = '/'
+                window.location = '/reportingTime'
             }else{
                 if (res.status === 401) {
                     this.error(res.data.msg)
@@ -134,8 +137,13 @@ export default {
         if (this.data.staff_id.trim()=='') return this.error('Staff ID is required'); 
         //this.isClockin = true
         const  res = await axios.post(`app/create_reportedTime/${this.data.staff_id}`);
-            if (res.status === 200) {
+            if (res.status === 201) {
                 //console.log(res.data);
+                if (res.data.status == 1) {
+                    this.i(`You were ${humanizeDuration(res.data.verdict)} early`, 'Clocked in!'); 
+                }else{
+                    this.i(`You were ${humanizeDuration(res.data.verdict)} late`, 'Clocked in!'); 
+                }
             }else {
                 if (res.status === 401) {
                     console.log(res.data);
@@ -143,10 +151,16 @@ export default {
             }
         }
     },
-    created(){
+    async created(){
         this.showDate();
+            const get_reportingTime = await this.callApi('get', 'app/get_reportingTime');
+            //console.log(get_reportingTime.data)
+            this.reportingTime = get_reportingTime.data.time
+            //window.location = '/'
+        }
+        
     }
-}
+
 </script>
 
 <style scoped>

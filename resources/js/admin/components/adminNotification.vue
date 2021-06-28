@@ -1,5 +1,5 @@
 <template>
-                    <li class="_1noti">
+                    <li class="_1noti d-none">
                 <Dropdown trigger="click" placement="bottom-end">
                     <a href="javascript:void(0)">
                     <Icon type="ios-mail-outline" /> 
@@ -59,25 +59,23 @@ export default {
            //const getNotifications = await this.callApi('get', 'app/get_notifications');
            const Notifications = await this.callApi('get', 'app/get_last_notification');
 
-           //console.log(Notifications.status);
-            if (Notifications.status === 200) {           
+           //console.log(Notifications.data.notifications_count);
+            if (Notifications.status === 200 && Notifications.data.notifications_count > 0) {           
             //notify the admin if the latest reported time is late
             //console.log(Notifications);
             if (Notifications.data.notifications[0].status === 0 && Notifications.data.notifications_count > this.NotificationsCount) {
                 //console.log(Notifications.data)
-                this.$Notice.open({
-                    title: 'Notification title',
-                        desc: `${Notifications.data.notifications[0].name} was late for ${humanizeDuration(Notifications.data.notifications[0].timediff)}`
-                    });
+                // this.$Notice.open({
+                //     title: 'Notification title',
+                //         desc: `${Notifications.data.notifications[0].name} was late for ${humanizeDuration(Notifications.data.notifications[0].timediff)}`
+                //     });
             //update notifications count
             this.NotificationsCount = Notifications.data.notifications_count
             this.Notifications = Notifications.data.notifications
             return this.showNotification(Notifications.data.notifications[0].name, humanizeDuration(Notifications.data.notifications[0].timediff));
             }
 
-		} else {
-			this.swr()
-		} 
+		}
         },
         showNotification(name, timediff){
                     Push.create('Timesheet App', {
@@ -87,7 +85,7 @@ export default {
         }
     },
     created() {
-       // setInterval(this.getNotifications, 2000)
+        setInterval(this.getNotifications, 2000)
         console.log(humanizeDuration(223000));
     }
 }

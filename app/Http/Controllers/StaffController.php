@@ -151,9 +151,15 @@ public function createReportedTime(Request $request, $staff_id) {
                 'reportingtime' => $reportingTime,
                 'timereported' => $newreportedTime,
                 'timediff' => $timediff,
-                'status' => 1
+                'status' => 1,
+                'verdict' => 'early'
             ]);
             return $reportedTime;
+            return response()->json([
+                'status' => 1,
+                'msg' => 'Clocked in  Successfully',
+                'verdict' => $timediff
+            ], 201);
             } else {
             $reportedTime = Reportnotification::create([
                 'staff_id' => $staff_id,
@@ -161,9 +167,14 @@ public function createReportedTime(Request $request, $staff_id) {
                 'reportingtime' => $reportingTime,
                 'timereported' => $newreportedTime,
                 'timediff' => $timediff,
-                'status' => 0
+                'status' => 0,
+                'verdict' => 'late'
             ]);
-            return $reportedTime;
+            return response()->json([
+                'status' => 0,
+                'msg' => 'Clocked in  Successfully',
+                'verdict' => $timediff
+            ], 201);
             
         }
     } else{
@@ -177,6 +188,14 @@ public function getDateRange(Request $request, $fromDate, $toDate) {
     //return $fromDate;
     $getDateData = Reportnotification::whereBetween('created_at', [$fromDate, $toDate])->get();
     return $getDateData;
+
+}
+
+
+public function getSortedVerdicts(Request $request, $selectedVerdict) {
+    //return $selectedVerdict;
+    $getSortedData = Reportnotification::where('status', $selectedVerdict)->get();
+    return $getSortedData;
 
 }
 

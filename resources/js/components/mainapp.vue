@@ -17,20 +17,7 @@
             >
                 <div class="_navbar_left">
                     <div class="_navbar_logo">
-                        <a href class="_navbar_logo_link">
-                            <img
-                                class="_navbar_logo_img"
-                                src="/static/img/logo-icon.png"
-                                alt
-                                title
-                            />
-                            <img
-                                class="_navbar_logo_img_text"
-                                src="/static/img/logo-text.png"
-                                alt
-                                title
-                            />
-                        </a>
+                        <h3>TimeSheet App</h3>
                     </div>
 
                     <!-- TOP BAR -->
@@ -70,12 +57,10 @@
                 <!-- NOTIFICATIONS AND MESSAGES ON THE TOP BAR RIGHT -->
                         <div class="_navbar_right">
             <ul class="_navbar_right_list">
-                <li class="_mosearch" @click="mobSearchOpen = true"><Icon type="ios-search-outline" /></li>
-                <li>Hello</li>
-                
+                <li class="_mosearch d-none" @click="mobSearchOpen = true"><Icon type="ios-search-outline" /></li>                
                 <adminNotification/>
 
-                <li class="_nav_pro">
+                <li class="_nav_pro d-none">
                 <Dropdown trigger="click" placement="bottom-end">
                     <a href="javascript:void(0)">
                     <div class="_nav_pro_pic">
@@ -83,7 +68,7 @@
                     </div>
                     </a>
                     <DropdownMenu slot="list">
-                    <div class="_nav_pro_main">
+                    <div class="_nav_pro_main"> 
                         <div class="_nav_pro_top">
                         <div class="_nav_pro_top_pic">
                             <img class="_nav_pro_top_img" src="/static/img/ONE.jpg" title="" alt="">
@@ -200,10 +185,6 @@
                                 <p class="_group_name">
                                     <Icon type="ios-more" />
                                 </p>
-                                <MenuItem to="/" name="index">
-                                    <Icon type="md-home" />
-                                    <span class="submenu_text">Home</span>
-                                </MenuItem>
                                 <MenuItem to="/staff" name="2">
                                     <Icon type="md-people" />
                                     <span class="submenu_text">Staff</span>
@@ -212,12 +193,7 @@
                                     <Icon type="ios-clock" />
                                     <span class="submenu_text">Reporting Time</span>
                                 </MenuItem>
-                                <MenuItem name="6">
-                                    <Icon type="ios-notifications" />
-                                    <span class="submenu_text"
-                                        >Notifications</span
-                                    >
-                                </MenuItem>
+
                             </MenuGroup>
 
 

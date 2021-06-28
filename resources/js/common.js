@@ -26,6 +26,7 @@ export default {
                 desc: desc
             });
         },
+
         success (desc, title='Great!') {
             this.$Notice.success({
                 title: title,
