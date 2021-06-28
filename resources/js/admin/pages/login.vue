@@ -57,7 +57,7 @@
             <Input type="password"  v-model="data.password"  placeholder="Password" />                        
             </div>                                         -->
             <div class="login_footer">
-                <Button type="primary"   @click="clockin">{{isClockin ? 'Clocking in' : 'Sign in'}}</Button>
+                <Button type="primary"  :disabled="isClockin" :loading="isClockin"  @click="clockin">{{isClockin ? 'Clocking in' : 'Sign in'}}</Button>
             </div>
         </div>
 
@@ -135,20 +135,22 @@ export default {
         },
         async clockin() {
         if (this.data.staff_id.trim()=='') return this.error('Staff ID is required'); 
-        //this.isClockin = true
+        this.isClockin = true
         const  res = await axios.post(`app/create_reportedTime/${this.data.staff_id}`);
+            this.isClockin = true
             if (res.status === 201) {
                 //console.log(res.data);
                 if (res.data.status == 1) {
-                    this.i(`You were ${humanizeDuration(res.data.verdict)} early`, 'Clocked in!'); 
+                    this.i(`You were ${humanizeDuration(res.data.timediff)} early`, 'Clocked in!'); 
                 }else{
-                    this.i(`You were ${humanizeDuration(res.data.verdict)} late`, 'Clocked in!'); 
+                    this.i(`You were ${humanizeDuration(res.data.timediff)} late`, 'Clocked in!'); 
                 }
             }else {
                 if (res.status === 401) {
                     console.log(res.data);
                 }
             }
+            this.isClockin = false
         }
     },
     async created(){

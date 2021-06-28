@@ -127,7 +127,6 @@ public function createReportedTime(Request $request, $staff_id) {
         //Get the time of the last reporting time set by the admin
         $reportingTime = Reportingtime::get('time')->last();
         $reportingTime = $reportingTime->time;
-        
         //get the time of the latest reported time of the user 
         $reportedTime = Reportedtime::select('created_at')->where('staff_id', $staff_id)->get()->last();
         $newreportedTime = $reportedTime->created_at->format('H:i:s');
