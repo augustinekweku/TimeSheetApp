@@ -54,86 +54,155 @@
                             <Icon type="ios-search-outline" />
                         </li>
 
-                <!-- NOTIFICATIONS AND MESSAGES ON THE TOP BAR RIGHT -->
+                        <!-- NOTIFICATIONS AND MESSAGES ON THE TOP BAR RIGHT -->
                         <div class="_navbar_right">
-            <ul class="_navbar_right_list">
-                <li class="_mosearch d-none" @click="mobSearchOpen = true"><Icon type="ios-search-outline" /></li>                
-                <adminNotification/>
+                            <ul class="_navbar_right_list">
+                                <li
+                                    class="_mosearch d-none"
+                                    @click="mobSearchOpen = true"
+                                >
+                                    <Icon type="ios-search-outline" />
+                                </li>
+                                <adminNotification />
 
-                <li class="_nav_pro d-none">
-                <Dropdown trigger="click" placement="bottom-end">
-                    <a href="javascript:void(0)">
-                    <div class="_nav_pro_pic">
-                        <img class="_nav_pro_img" src="/static/img/photo.jpg" alt="" title="">
-                    </div>
-                    </a>
-                    <DropdownMenu slot="list">
-                    <div class="_nav_pro_main"> 
-                        <div class="_nav_pro_top">
-                        <div class="_nav_pro_top_pic">
-                            <img class="_nav_pro_top_img" src="/static/img/ONE.jpg" title="" alt="">
+                                <li class="_nav_pro d-none">
+                                    <Dropdown
+                                        trigger="click"
+                                        placement="bottom-end"
+                                    >
+                                        <a href="javascript:void(0)">
+                                            <div class="_nav_pro_pic">
+                                                <img
+                                                    class="_nav_pro_img"
+                                                    src="/static/img/photo.jpg"
+                                                    alt=""
+                                                    title=""
+                                                />
+                                            </div>
+                                        </a>
+                                        <DropdownMenu slot="list">
+                                            <div class="_nav_pro_main">
+                                                <div class="_nav_pro_top">
+                                                    <div
+                                                        class="_nav_pro_top_pic"
+                                                    >
+                                                        <img
+                                                            class="_nav_pro_top_img"
+                                                            src="/static/img/ONE.jpg"
+                                                            title=""
+                                                            alt=""
+                                                        />
+                                                    </div>
+
+                                                    <div
+                                                        class="_nav_pro_top_details"
+                                                    >
+                                                        <p
+                                                            class="_nav_pro_top_name"
+                                                        >
+                                                            Steave Jobs
+                                                        </p>
+                                                        <p
+                                                            class="_nav_pro_top_email"
+                                                        >
+                                                            SteaveJobs@gmail.com
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    class="_nav_pro_list_main _1border_color"
+                                                >
+                                                    <ul class="_nav_pro_list">
+                                                        <li>
+                                                            <router-link
+                                                                to="/profile"
+                                                            >
+                                                                <Icon
+                                                                    type="md-person"
+                                                                />
+                                                                <p
+                                                                    class="_nav_pro_list_text"
+                                                                >
+                                                                    My Profile
+                                                                </p>
+                                                            </router-link>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="">
+                                                                <Icon
+                                                                    type="md-cash"
+                                                                />
+                                                                <p
+                                                                    class="_nav_pro_list_text"
+                                                                >
+                                                                    My Balance
+                                                                </p>
+                                                            </a>
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="">
+                                                                <Icon
+                                                                    type="md-mail"
+                                                                />
+                                                                <p
+                                                                    class="_nav_pro_list_text"
+                                                                >
+                                                                    My Inbox
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div
+                                                    class="_nav_pro_list_main _1border_color"
+                                                >
+                                                    <ul class="_nav_pro_list">
+                                                        <li>
+                                                            <a href="">
+                                                                <Icon
+                                                                    type="ios-cog"
+                                                                />
+                                                                <p
+                                                                    class="_nav_pro_list_text"
+                                                                >
+                                                                    Account
+                                                                    Setting
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+
+                                                <div
+                                                    class="_nav_pro_list_main _1border_color"
+                                                >
+                                                    <ul class="_nav_pro_list">
+                                                        <li>
+                                                            <a href="">
+                                                                <Icon
+                                                                    type="ios-exit"
+                                                                />
+                                                                <p
+                                                                    class="_nav_pro_list_text"
+                                                                >
+                                                                    Log Out
+                                                                </p>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </DropdownMenu>
+                                    </Dropdown>
+                                </li>
+                            </ul>
                         </div>
 
-                        <div class="_nav_pro_top_details">
-                            <p class="_nav_pro_top_name">Steave Jobs</p>
-                            <p class="_nav_pro_top_email">SteaveJobs@gmail.com</p>
-                        </div>
-                        </div>
-
-                        <div class="_nav_pro_list_main _1border_color">
-                        <ul class="_nav_pro_list">
-                            <li>
-                            <router-link to="/profile">
-                                <Icon type="md-person" />
-                                <p class="_nav_pro_list_text">My Profile</p>
-                            </router-link>
-                            </li>
-
-                            <li>
-                            <a href="">
-                                <Icon type="md-cash" />
-                                <p class="_nav_pro_list_text">My Balance</p>
-                            </a>
-                            </li>
-
-                            <li>
-                            <a href="">
-                                <Icon type="md-mail" />
-                                <p class="_nav_pro_list_text">My Inbox</p>
-                            </a>
-                            </li>
-                        </ul>
-                        </div>
-
-                        <div class="_nav_pro_list_main _1border_color">
-                        <ul class="_nav_pro_list">
-                            <li>
-                            <a href="">
-                                <Icon type="ios-cog" />
-                                <p class="_nav_pro_list_text">Account Setting</p>
-                            </a>
-                            </li>
-                        </ul>
-                        </div>
-
-                        <div class="_nav_pro_list_main _1border_color">
-                        <ul class="_nav_pro_list">
-                            <li>
-                            <a href="">
-                                <Icon type="ios-exit" />
-                                <p class="_nav_pro_list_text">Log Out</p>
-                            </a>
-                            </li>
-                        </ul>
-                        </div>
-                    </div>
-                    </DropdownMenu>
-                </Dropdown>
-                </li>
-            </ul>
-        </div>
-
-                    <!-- AVATAR WITH DROPDOWN -->
+                        <!-- AVATAR WITH DROPDOWN -->
                     </ul>
                 </div>
 
@@ -175,9 +244,7 @@
                 ]"
             >
                 <div class="_left_sidebar_main">
-                    
-                        <!-- PROFILE PIC WITH NAME AND ROLE -->
-                    
+                    <!-- PROFILE PIC WITH NAME AND ROLE -->
 
                     <div class="_left_sidebar_menu _1scrollbar">
                         <Menu :theme="theme3" :active-name="activeRoute">
@@ -189,14 +256,16 @@
                                     <Icon type="md-people" />
                                     <span class="submenu_text">Staff</span>
                                 </MenuItem>
-                                <MenuItem to="/reportingTime" name="reportingtime">
+                                <MenuItem
+                                    to="/reportingTime"
+                                    name="reportingtime"
+                                >
                                     <Icon type="ios-clock" />
-                                    <span class="submenu_text">Reporting Time</span>
+                                    <span class="submenu_text"
+                                        >Reporting Time</span
+                                    >
                                 </MenuItem>
-
                             </MenuGroup>
-
-
                         </Menu>
                     </div>
 
@@ -221,13 +290,14 @@
                                     >Dark</span
                                 >
                             </MenuItem>
-                            <a style="text-decoration:none;display:inline" href="/logout">
-                            <MenuItem name="logout">
-                            
-                                <Icon  type="md-log-out" />
-                                <span class="submenu_text">Logout</span>
-                            
-                            </MenuItem>
+                            <a
+                                style="text-decoration:none;display:inline"
+                                href="/logout"
+                            >
+                                <MenuItem name="logout">
+                                    <Icon type="md-log-out" />
+                                    <span class="submenu_text">Logout</span>
+                                </MenuItem>
                             </a>
                         </Menu>
                         <!-- <p>Change theme</p>
@@ -268,7 +338,7 @@
 </template>
 
 <script>
-import adminNotification from '../admin/components/adminNotification'
+import adminNotification from "../admin/components/adminNotification";
 import Footer from "./footer.vue";
 export default {
     components: {
@@ -286,13 +356,13 @@ export default {
             darkSidebar: false,
             darkMode: false,
             mobSearchOpen: false,
-            mobSidebar: false,
+            mobSidebar: false
         };
     },
 
     methods: {
-        async logout(){
-            const logout = await this.callApi('get', '/logout');
+        async logout() {
+            const logout = await this.callApi("get", "/logout");
         },
         lightSidebarClick() {
             this.lightSidebar = true;

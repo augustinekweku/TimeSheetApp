@@ -17,15 +17,19 @@ class StaffController extends Controller
 {
     public function index(Request $request) {
         //dd($request->path());
+        //return to login page if a user is not logged in and the request path is not the login page 
         if (!Auth::check() && $request->path() != 'login') {
             return redirect('/login');
         }
+        //return to the welcome page if a user is not logged in and the requested path is the login page
         if (!Auth::check() && $request->path() == 'login') {
             return view('welcome');
         }
+        //return to the welcome page if the requested path is the login page
         if ($request->path() == 'login') {
             return redirect('/');
         }
+        //return to the welcome page if all of the above are not true
         return view('welcome');
     }
 
