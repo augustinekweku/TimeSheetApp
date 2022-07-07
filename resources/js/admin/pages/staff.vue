@@ -128,7 +128,7 @@ export default {
             if (this.staff.password.trim() == "")
                 return this.error("Password is required");
             //if (!this.staff.role_id) return this.error('User Role is required');
-
+            this.isAdding = true
             const res = await this.callApi(
                 "post",
                 "app/create_staff",
@@ -153,6 +153,7 @@ export default {
                     this.swr();
                 }
             }
+            this.isAdding =false
         }
     },
     async created() {

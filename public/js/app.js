@@ -1911,6 +1911,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -1930,7 +1948,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.callApi('get', 'app/get_last_notification');
+                return _this.callApi("get", "app/get_last_notification");
 
               case 2:
                 Notifications = _context.sent;
@@ -1945,12 +1963,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                //console.log(Notifications.data)
-                // this.$Notice.open({
-                //     title: 'Notification title',
-                //         desc: `${Notifications.data.notifications[0].name} was late for ${humanizeDuration(Notifications.data.notifications[0].timediff)}`
-                //     });
-                //update notifications count
                 _this.NotificationsCount = Notifications.data.notifications_count;
                 _this.Notifications = Notifications.data.notifications;
                 return _context.abrupt("return", _this.showNotification(Notifications.data.notifications[0].name, humanizeDuration(Notifications.data.notifications[0].timediff)));
@@ -1964,7 +1976,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     showNotification: function showNotification(name, timediff) {
-      Push.create('Timesheet App', {
+      Push.create("Timesheet App", {
         body: "".concat(name, " was late for ").concat(timediff),
         timeout: 5000
       });
@@ -1972,7 +1984,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     setInterval(this.getNotifications, 2000);
-    console.log(humanizeDuration(223000));
   }
 });
 
@@ -2066,24 +2077,65 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       data: {
-        email: '',
-        password: '',
-        staff_id: '',
-        userType: ''
+        email: "",
+        password: "",
+        staff_id: "",
+        userType: ""
       },
       isLogging: false,
       isClockin: false,
       staff_login: false,
       admin_login: true,
       darkMode: false,
-      today: '',
-      week: ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'],
-      reportingTime: ''
+      today: "",
+      week: ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"],
+      reportingTime: ""
     };
   },
   components: {
@@ -2098,12 +2150,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       //!this.staff_login ? this.staff_login = true : this.staff_login = false
       this.admin_login = false;
       this.staff_login = true;
-      this.data.userType = 'staff';
+      this.data.userType = "staff";
     },
     showAdminLogin: function showAdminLogin() {
       this.staff_login = false;
       this.admin_login = true;
-      this.data.userType = 'admin';
+      this.data.userType = "admin";
     },
     login: function login() {
       var _this = this;
@@ -2114,28 +2166,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this.data.email.trim() == '')) {
+                if (!(_this.data.email.trim() == "")) {
                   _context.next = 2;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Email is required'));
+                return _context.abrupt("return", _this.error("Email is required"));
 
               case 2:
-                if (!(_this.data.password.trim() == '')) {
+                if (!(_this.data.password.trim() == "")) {
                   _context.next = 4;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Password is required'));
+                return _context.abrupt("return", _this.error("Password is required"));
 
               case 4:
-                if (!(_this.data.userType.trim() == '')) {
+                if (!(_this.data.userType.trim() == "")) {
                   _context.next = 6;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Choose User Type'));
+                return _context.abrupt("return", _this.error("Choose User Type"));
 
               case 6:
                 if (!(_this.data.password.length < 6)) {
@@ -2143,12 +2195,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Incorrect Login credentials'));
+                return _context.abrupt("return", _this.error("Incorrect Login credentials"));
 
               case 8:
                 _this.isLogging = true;
                 _context.next = 11;
-                return _this.callApi('post', 'app/login', _this.data);
+                return _this.callApi("post", "app/login", _this.data);
 
               case 11:
                 res = _context.sent;
@@ -2156,7 +2208,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status === 200) {
                   _this.success(res.data.msg);
 
-                  window.location = '/reportingTime';
+                  window.location = "/reportingTime";
                 } else {
                   if (res.status === 401) {
                     _this.error(res.data.msg);
@@ -2188,12 +2240,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (!(_this2.data.staff_id.trim() == '')) {
+                if (!(_this2.data.staff_id.trim() == "")) {
                   _context2.next = 2;
                   break;
                 }
 
-                return _context2.abrupt("return", _this2.error('Staff ID is required'));
+                return _context2.abrupt("return", _this2.error("Staff ID is required"));
 
               case 2:
                 _this2.isClockin = true;
@@ -2207,9 +2259,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status === 201) {
                   //console.log(res.data);
                   if (res.data.status == 1) {
-                    _this2.i("You were ".concat(humanizeDuration(res.data.timediff), " early"), 'Clocked in!');
+                    _this2.i("You were ".concat(humanizeDuration(res.data.timediff), " early"), "Clocked in!");
                   } else {
-                    _this2.i("You were ".concat(humanizeDuration(res.data.timediff), " late"), 'Clocked in!');
+                    _this2.i("You were ".concat(humanizeDuration(res.data.timediff), " late"), "Clocked in!");
                   }
                 } else {
                   if (res.status === 401) {
@@ -2240,7 +2292,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _this3.showDate();
 
               _context3.next = 3;
-              return _this3.callApi('get', 'app/get_reportingTime');
+              return _this3.callApi("get", "app/get_reportingTime");
 
             case 3:
               get_reportingTime = _context3.sent;
@@ -2336,45 +2388,73 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {},
   data: function data() {
     return {
       verdictList: [{
         value: 0,
-        label: 'Late'
+        label: "Late"
       }, {
         value: 1,
-        label: 'Early'
+        label: "Early"
       }, {
-        value: '*',
-        label: 'All'
+        value: "*",
+        label: "All"
       }],
-      selectedVerdict: '',
+      selectedVerdict: "",
       showRecordsRange: false,
-      fromDate: '',
-      toDate: '',
+      fromDate: "",
+      toDate: "",
       addModal: false,
       isAdding: false,
-      reportingTime: '',
-      setTime: '',
+      reportingTime: "",
+      setTime: "",
       reportedTimes: {},
       columns: [{
-        label: 'Name',
-        field: 'name'
+        label: "Name",
+        field: "name"
       }, {
-        label: 'Staff ID',
-        field: 'staff_id',
-        type: 'number'
+        label: "Staff ID",
+        field: "staff_id",
+        type: "number"
       }, {
-        label: 'Reporting time',
-        field: 'reportingtime'
+        label: "Reporting time",
+        field: "reportingtime"
       }, {
-        label: 'Time Reported',
-        field: 'timereported'
+        label: "Time Reported",
+        field: "timereported"
       }, {
-        label: 'Verdict',
-        field: 'verdict'
+        label: "Verdict",
+        field: "verdict"
       }],
       rows: [],
       lateRecords: []
@@ -2390,7 +2470,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 axios.get("app/getSortedVerdicts/".concat(_this.selectedVerdict)).then(function (result) {
-                  if (_this.selectedVerdict === '*') {
+                  if (_this.selectedVerdict === "*") {
                     return _this.rows = _this.reportedTimes.data;
                   }
 
@@ -2415,20 +2495,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (!(_this2.fromDate.trim() == '')) {
+                if (!(_this2.fromDate.trim() == "")) {
                   _context2.next = 2;
                   break;
                 }
 
-                return _context2.abrupt("return", _this2.error('Beginning date is required'));
+                return _context2.abrupt("return", _this2.error("Beginning date is required"));
 
               case 2:
-                if (!(_this2.toDate.trim() == '')) {
+                if (!(_this2.toDate.trim() == "")) {
                   _context2.next = 4;
                   break;
                 }
 
-                return _context2.abrupt("return", _this2.error('End date name is required'));
+                return _context2.abrupt("return", _this2.error("End date name is required"));
 
               case 4:
                 axios.get("app/get_date_range/".concat(_this2.fromDate, "/").concat(_this2.toDate)).then(function (result) {
@@ -2451,19 +2531,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     PrintTable: function PrintTable() {
-      var printWindow = window.open('', '', 'height=200,width=400');
-      printWindow.document.write('<html><head><title>Time Sheet</title>'); //Print the Table CSS.
+      var printWindow = window.open("", "", "height=200,width=400");
+      printWindow.document.write("<html><head><title>Time Sheet</title>"); //Print the Table CSS.
 
       printWindow.document.write('<style type = "text/css">');
-      printWindow.document.write('.vgt-global-search{display:none;}.footer__row-count__label, .footer__row-count__select , button{display:none;}body{font-family: Arial;font-size: 10pt;}table{ text-align:center; width:90%; border: 1px solid #ccc;border-collapse: collapse;}table th{background-color: #F7F7F7;color: #333;font-weight: bold;}table th, table td{padding: 5px;border: 1px solid #ccc;}');
-      printWindow.document.write('</style>');
-      printWindow.document.write('</head>'); //Print the DIV contents ie. the HTML Table.
+      printWindow.document.write(".vgt-global-search{display:none;}.footer__row-count__label, .footer__row-count__select , button{display:none;}body{font-family: Arial;font-size: 10pt;}table{ text-align:center; width:90%; border: 1px solid #ccc;border-collapse: collapse;}table th{background-color: #F7F7F7;color: #333;font-weight: bold;}table th, table td{padding: 5px;border: 1px solid #ccc;}");
+      printWindow.document.write("</style>");
+      printWindow.document.write("</head>"); //Print the DIV contents ie. the HTML Table.
 
-      printWindow.document.write('<body>');
+      printWindow.document.write("<body>");
       var divContents = document.getElementById("dvContents").innerHTML;
       printWindow.document.write(divContents);
-      printWindow.document.write('</body>');
-      printWindow.document.write('</html>');
+      printWindow.document.write("</body>");
+      printWindow.document.write("</html>");
       printWindow.document.close();
       printWindow.print();
     },
@@ -2476,12 +2556,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (!(_this3.reportingTime.trim() == '')) {
+                if (!(_this3.reportingTime.trim() == "")) {
                   _context3.next = 2;
                   break;
                 }
 
-                return _context3.abrupt("return", _this3.error('Time is not set'));
+                return _context3.abrupt("return", _this3.error("Time is not set"));
 
               case 2:
                 axios.post("app/create_reportingTime/".concat(_this3.reportingTime)).then(function (result) {
@@ -2515,11 +2595,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return _this4.callApi('get', 'app/get_reportedTimes');
+                return _this4.callApi("get", "app/get_reportedTimes");
 
               case 2:
                 get_reportedTimes = _context4.sent;
-                console.log('sdasdasdas', get_reportedTimes.data);
+                console.log("sdasdasdas", get_reportedTimes.data);
                 _this4.reportedTimes = get_reportedTimes;
                 _this4.rows = get_reportedTimes.data;
 
@@ -2542,7 +2622,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context5.prev = _context5.next) {
             case 0:
               _context5.next = 2;
-              return _this5.callApi('get', 'app/get_reportingTime');
+              return _this5.callApi("get", "app/get_reportingTime");
 
             case 2:
               get_reportingTime = _context5.sent;
@@ -2629,34 +2709,57 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       columns12: [{
-        title: 'First Name',
-        slot: 'firstName'
+        title: "First Name",
+        slot: "firstName"
       }, {
-        title: 'Last Name',
-        key: 'lastName'
+        title: "Last Name",
+        key: "lastName"
       }, {
-        title: 'Staff ID',
-        key: 'staff_id'
+        title: "Staff ID",
+        key: "staff_id"
       }, {
-        title: 'Email',
-        key: 'email'
+        title: "Email",
+        key: "email"
       }, {
-        title: 'Action',
-        slot: 'action',
+        title: "Action",
+        slot: "action",
         width: 150,
-        align: 'center'
+        align: "center"
       }],
       data6: [],
       addModal: false,
       staff: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
         role_id: null
       },
       isAdding: false,
@@ -2666,9 +2769,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   methods: {
     show: function show(index) {
       this.$Modal.info({
-        title: 'Staff Info',
+        title: "Staff Info",
         content: "Name\uFF1A".concat(this.data6[index].firstName, "<br>Last Name\uFF1A").concat(this.data6[index].lastName, "<br>Staff ID\uFF1A").concat(this.data6[index].staff_id, "<br>Email\uFF1A").concat(this.data6[index].email),
-        okText: 'OK'
+        okText: "OK"
       });
     },
     remove: function remove(index) {
@@ -2683,54 +2786,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!(_this.staff.firstName.trim() == '')) {
+                if (!(_this.staff.firstName.trim() == "")) {
                   _context.next = 2;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('First name is required'));
+                return _context.abrupt("return", _this.error("First name is required"));
 
               case 2:
-                if (!(_this.staff.lastName.trim() == '')) {
+                if (!(_this.staff.lastName.trim() == "")) {
                   _context.next = 4;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Last name is required'));
+                return _context.abrupt("return", _this.error("Last name is required"));
 
               case 4:
-                if (!(_this.staff.email.trim() == '')) {
+                if (!(_this.staff.email.trim() == "")) {
                   _context.next = 6;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Email is required'));
+                return _context.abrupt("return", _this.error("Email is required"));
 
               case 6:
-                if (!(_this.staff.password.trim() == '')) {
+                if (!(_this.staff.password.trim() == "")) {
                   _context.next = 8;
                   break;
                 }
 
-                return _context.abrupt("return", _this.error('Password is required'));
+                return _context.abrupt("return", _this.error("Password is required"));
 
               case 8:
-                _context.next = 10;
-                return _this.callApi('post', 'app/create_staff', _this.staff);
+                //if (!this.staff.role_id) return this.error('User Role is required');
+                _this.isAdding = true;
+                _context.next = 11;
+                return _this.callApi("post", "app/create_staff", _this.staff);
 
-              case 10:
+              case 11:
                 res = _context.sent;
 
                 if (res.status === 201) {
                   _this.staffs.unshift(res.data);
 
-                  _this.success('Staff added successfully');
+                  _this.success("Staff added successfully");
 
                   _this.addModal = false;
-                  _this.staff.firstName = '';
-                  _this.staff.lastName = '';
-                  _this.staff.email = '';
-                  _this.staff.password = '';
+                  _this.staff.firstName = "";
+                  _this.staff.lastName = "";
+                  _this.staff.email = "";
+                  _this.staff.password = "";
                 } else {
                   if (res.status === 422) {
                     console.log(res.data.errors);
@@ -2743,7 +2848,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-              case 12:
+                _this.isAdding = false;
+
+              case 14:
               case "end":
                 return _context.stop();
             }
@@ -2762,7 +2869,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context2.prev = _context2.next) {
             case 0:
               _context2.next = 2;
-              return _this2.callApi('get', 'app/get_users');
+              return _this2.callApi("get", "app/get_users");
 
             case 2:
               getStaffs = _context2.sent;
@@ -2776,7 +2883,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               }
 
               $(document).ready(function () {
-                console.log('hello jquery'); //$('#table_id').DataTable();
+                console.log("hello jquery"); //$('#table_id').DataTable();
               });
 
             case 5:
@@ -3081,6 +3188,76 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3112,7 +3289,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return _this.callApi('get', '/logout');
+                return _this.callApi("get", "/logout");
 
               case 2:
                 logout = _context.sent;
@@ -3192,19 +3369,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3282,50 +3446,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         title: title,
         desc: desc
       });
-    },
-    checkUserPermission: function checkUserPermission(key) {
-      if (!this.userPermission) return true;
-      var isPermitted = false;
-
-      var _iterator = _createForOfIteratorHelper(this.userPermission),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var d = _step.value;
-
-          if (d[key]) {
-            isPermitted = true;
-            break;
-          } else {
-            break;
-          }
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      return isPermitted;
     }
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
-    'userPermission': 'getUserPermission'
-  })), {}, {
-    isReadPermitted: function isReadPermitted() {
-      return this.checkUserPermission('read');
-    },
-    isWritePermitted: function isWritePermitted() {
-      return this.checkUserPermission('write');
-    },
-    isUpdatePermitted: function isUpdatePermitted() {
-      return this.checkUserPermission('update');
-    },
-    isDeletePermitted: function isDeletePermitted() {
-      return this.checkUserPermission('delete');
-    }
-  })
+  computed: {}
 });
 
 /***/ }),
@@ -3504,7 +3627,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n._1adminOverveiw_table_recent[data-v-c2ef5de0] {\n    margin: 0 auto;\n    margin-top: 160px;\n}\n.login_footer[data-v-c2ef5de0], .login_header[data-v-c2ef5de0] {\n    text-align: center;\n}\n.login_header[data-v-c2ef5de0]{\n    margin-bottom: 15px;\n}\n.space[data-v-c2ef5de0] {\n    margin: 10px 0;\n}\n.login[data-v-c2ef5de0]{\n    border-radius: 5px;\n    padding: 10px 10px;\n    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);}\n.userTypeButton[data-v-c2ef5de0]{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin-top: 30px;\n}\n.digital_clock[data-v-c2ef5de0] {\n    \n    border: 2px solid grey;\n    margin: 0 auto;\n    text-align: center;\n    width: -webkit-fit-content;\n    width: -moz-fit-content;\n    width: fit-content;\n    padding: 10px;\n    box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);\n    border-radius: 5px;\n}\n.day[data-v-c2ef5de0] {\n    font-size: 15px;\n}\n.clockTime[data-v-c2ef5de0]{\n    font-weight: 300;\n}\n.clockDay[data-v-c2ef5de0] {\n    font-weight:300;\n}\n.clock_wrapper[data-v-c2ef5de0] {\n    margin: 10px 0;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n._1adminOverveiw_table_recent[data-v-c2ef5de0] {\n    margin: 0 auto;\n    margin-top: 160px;\n}\n.login_footer[data-v-c2ef5de0],\n.login_header[data-v-c2ef5de0] {\n    text-align: center;\n}\n.login_header[data-v-c2ef5de0] {\n    margin-bottom: 15px;\n}\n.space[data-v-c2ef5de0] {\n    margin: 10px 0;\n}\n.login[data-v-c2ef5de0] {\n    border-radius: 5px;\n    padding: 10px 10px;\n    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);\n}\n.userTypeButton[data-v-c2ef5de0] {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin-top: 30px;\n}\n.digital_clock[data-v-c2ef5de0] {\n    border: 2px solid grey;\n    margin: 0 auto;\n    text-align: center;\n    width: -webkit-fit-content;\n    width: -moz-fit-content;\n    width: fit-content;\n    padding: 10px;\n    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.75);\n    border-radius: 5px;\n}\n.day[data-v-c2ef5de0] {\n    font-size: 15px;\n}\n.clockTime[data-v-c2ef5de0] {\n    font-weight: 300;\n}\n.clockDay[data-v-c2ef5de0] {\n    font-weight: 300;\n}\n.clock_wrapper[data-v-c2ef5de0] {\n    margin: 10px 0;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3528,7 +3651,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.staff[data-v-51a07fc2]{\n    margin: 0;\n    padding: 15px;\n}\n.add_button[data-v-51a07fc2] {\n    margin: 10px 0px;\n}\n.space[data-v-51a07fc2]{\n    margin: 10px 0px;\n}\ntable[data-v-51a07fc2] {\nborder-collapse: collapse;\nborder-spacing: 0;\nwidth: 100%;\nborder: 1px solid #ddd;\n}\nth[data-v-51a07fc2], td[data-v-51a07fc2] {\ntext-align: left;\npadding: 8px;\n}\n.top_buttons[data-v-51a07fc2] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 10px 0px;\n}\n.timer[data-v-51a07fc2] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 10px 0px;\n}\n.timer_body[data-v-51a07fc2]{\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.clock[data-v-51a07fc2]{\n    padding: 5px;\n    border-radius: 7px;\n}\n.searchDateRange[data-v-51a07fc2]{\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n.print_buttons[data-v-51a07fc2]{\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.staff[data-v-51a07fc2] {\n    margin: 0;\n    padding: 15px;\n}\n.add_button[data-v-51a07fc2] {\n    margin: 10px 0px;\n}\n.space[data-v-51a07fc2] {\n    margin: 10px 0px;\n}\ntable[data-v-51a07fc2] {\n    border-collapse: collapse;\n    border-spacing: 0;\n    width: 100%;\n    border: 1px solid #ddd;\n}\nth[data-v-51a07fc2],\ntd[data-v-51a07fc2] {\n    text-align: left;\n    padding: 8px;\n}\n.top_buttons[data-v-51a07fc2] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 10px 0px;\n}\n.timer[data-v-51a07fc2] {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    padding: 10px 0px;\n}\n.timer_body[data-v-51a07fc2] {\n    display: flex;\n    flex-direction: row;\n    align-items: center;\n}\n.clock[data-v-51a07fc2] {\n    padding: 5px;\n    border-radius: 7px;\n}\n.searchDateRange[data-v-51a07fc2] {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n}\n.print_buttons[data-v-51a07fc2] {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3552,7 +3675,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.staff[data-v-70d89107]{\n    margin: 0;\n    padding: 15px;\n}\n.add_button[data-v-70d89107] {\n    margin: 10px 0px;\n}\n.space[data-v-70d89107]{\n    margin: 10px 0px;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.staff[data-v-70d89107] {\n    margin: 0;\n    padding: 15px;\n}\n.add_button[data-v-70d89107] {\n    margin: 10px 0px;\n}\n.space[data-v-70d89107] {\n    margin: 10px 0px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -92117,7 +92240,11 @@ var render = function() {
                                   staticClass:
                                     "_1noti_list_name _1text_overflow"
                                 },
-                                [_vm._v("Arnold Schwarzenegger")]
+                                [
+                                  _vm._v(
+                                    "\n                                Arnold Schwarzenegger\n                            "
+                                  )
+                                ]
                               ),
                               _vm._v(" "),
                               _c(
@@ -92126,7 +92253,11 @@ var render = function() {
                                   staticClass:
                                     "_1noti_list_title _1text_overflow"
                                 },
-                                [_vm._v("has comment on your board")]
+                                [
+                                  _vm._v(
+                                    "\n                                has comment on your board\n                            "
+                                  )
+                                ]
                               ),
                               _vm._v(" "),
                               _c("p", { staticClass: "_1noti_list_time" }, [
@@ -92235,7 +92366,9 @@ var render = function() {
                 "Button",
                 { attrs: { type: "primary" } },
                 [
-                  _vm._v("\n            Choose User type\n            "),
+                  _vm._v(
+                    "\n                    Choose User type\n                    "
+                  ),
                   _c("Icon", { attrs: { type: "ios-arrow-down" } })
                 ],
                 1
@@ -92363,7 +92496,9 @@ var render = function() {
             _c("div", { staticClass: "space" }),
             _vm._v(" "),
             _c("p", [
-              _vm._v("Reporting Time: "),
+              _vm._v(
+                "\n                    Reporting Time:\n                    "
+              ),
               _c("span", { staticClass: "text-info" }, [
                 _vm._v(_vm._s(_vm.reportingTime))
               ])
@@ -92483,6 +92618,7 @@ var render = function() {
     _c("div", { staticClass: "timer" }, [
       _c("div", { staticClass: "timer_body" }, [
         _c("h3", [_vm._v("Reporting Time:")]),
+        _vm._v(" "),
         _c("h1", {
           staticStyle: { padding: "0 5px" },
           domProps: { innerHTML: _vm._s(_vm.setTime) }
@@ -92492,7 +92628,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "searchDateRange" }, [
       _c("div", [
-        _vm._v("\n    Between:    "),
+        _vm._v("\n            Between:\n            "),
         _c("input", {
           directives: [
             {
@@ -92514,7 +92650,7 @@ var render = function() {
             }
           }
         }),
-        _vm._v("\n    and :    "),
+        _vm._v(" and\n            : "),
         _c("input", {
           directives: [
             {
@@ -92555,9 +92691,9 @@ var render = function() {
     _vm.showRecordsRange
       ? _c("div", { staticClass: "text-center date_range_results" }, [
           _c("p", { staticClass: "text-center" }, [
-            _vm._v("Showing Attendance records from "),
+            _vm._v("\n            Showing Attendance records from "),
             _c("span", [_vm._v(_vm._s(_vm.fromDate))]),
-            _vm._v(" to "),
+            _vm._v(" to\n            "),
             _c("span", [_vm._v(_vm._s(_vm.toDate))])
           ])
         ])
@@ -93134,7 +93270,11 @@ var render = function() {
                                                       staticClass:
                                                         "_nav_pro_top_name"
                                                     },
-                                                    [_vm._v("Steave Jobs")]
+                                                    [
+                                                      _vm._v(
+                                                        "\n                                                        Steave Jobs\n                                                    "
+                                                      )
+                                                    ]
                                                   ),
                                                   _vm._v(" "),
                                                   _c(
@@ -93145,7 +93285,7 @@ var render = function() {
                                                     },
                                                     [
                                                       _vm._v(
-                                                        "SteaveJobs@gmail.com"
+                                                        "\n                                                        SteaveJobs@gmail.com\n                                                    "
                                                       )
                                                     ]
                                                   )
@@ -93192,7 +93332,7 @@ var render = function() {
                                                             },
                                                             [
                                                               _vm._v(
-                                                                "My Profile"
+                                                                "\n                                                                My Profile\n                                                            "
                                                               )
                                                             ]
                                                           )
@@ -93220,7 +93360,11 @@ var render = function() {
                                                             staticClass:
                                                               "_nav_pro_list_text"
                                                           },
-                                                          [_vm._v("My Balance")]
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                My Balance\n                                                            "
+                                                            )
+                                                          ]
                                                         )
                                                       ],
                                                       1
@@ -93244,7 +93388,11 @@ var render = function() {
                                                             staticClass:
                                                               "_nav_pro_list_text"
                                                           },
-                                                          [_vm._v("My Inbox")]
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                My Inbox\n                                                            "
+                                                            )
+                                                          ]
                                                         )
                                                       ],
                                                       1
@@ -93287,7 +93435,7 @@ var render = function() {
                                                           },
                                                           [
                                                             _vm._v(
-                                                              "Account Setting"
+                                                              "\n                                                                Account\n                                                                Setting\n                                                            "
                                                             )
                                                           ]
                                                         )
@@ -93330,7 +93478,11 @@ var render = function() {
                                                             staticClass:
                                                               "_nav_pro_list_text"
                                                           },
-                                                          [_vm._v("Log Out")]
+                                                          [
+                                                            _vm._v(
+                                                              "\n                                                                Log Out\n                                                            "
+                                                            )
+                                                          ]
                                                         )
                                                       ],
                                                       1
